@@ -1,0 +1,61 @@
+---
+title: "fish-length-weight"
+author: "Ryan Munnikhuis"
+date: "8/2/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+### Fish 
+**Fish**
+
+```{r}
+
+# l = fish length
+
+standard_weight = function(a, b, l) { a * (l^b) }
+
+#Milkfish weight 
+
+standard_weight(a= 0.0905, b = 2.52, l = 60)
+
+#Giant trevally
+
+standard_weight( a = 0.0353, b = 3.05, l = 60)
+
+#Great barracuda
+
+standard_weight( a = 0.0181, b = 3.27, l = 60)
+
+```
+```{r}
+fish_length = seq(from = 0, to = 200, by = 1)
+
+```
+
+```{r}
+barracuda_weight = standard_weight (a = 0.0181, b = 3.27, l = fish_length)
+
+```
+
+```{r}
+fish_df = data.frame(fish_length, barracuda_weight)
+
+```
+
+
+```{r}
+
+ggplot(data = fish_df, aes(x = fish_length, y = barracuda_weight)) + geom_point() + labs(x = "Fish Length", y = "Barracuda weight", title = "Giant Barracuda Weigt Versus Fish Length")
+                                                                        
+
+
+
+```
+
+
+## R Markdown
+
